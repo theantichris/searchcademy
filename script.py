@@ -16,3 +16,24 @@ def sparse_search(data, search_val):
                 if left < first and right > last:
                     print("{} is not in the dataset".format(search_val))
                     return
+                elif right <= last and data[right]:
+                    mid = right
+                    break
+                elif left >= first and data[left]:
+                    mid = left
+                    break
+
+                left += 1
+                right += 1
+
+        if data[mid] == search_val:
+            print("{} found at position {}".format(search_val, mid))
+            return
+
+        if search_val < data[mid]:
+            last = mid - 1
+
+        if search_val > data[mid]:
+            first = mid + 1
+
+    print("{} is not n the dataset".format(search_val)) 
